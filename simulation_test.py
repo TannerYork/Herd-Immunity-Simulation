@@ -7,7 +7,7 @@ from virus import Virus
 def test_create_population():
     virus = Virus("HIV", 0.8, 0.3)
     sim = Simulation(1000, 0.6, virus, 20)
-    population = sim._create_population()
+    population = sim._create_population(20)
     assert len(population) == 1000
     percent_vacc = sum(1 for person in population if person.is_vaccinated)/len(population)
     assert percent_vacc == 0.6
@@ -18,7 +18,7 @@ def test_simulation_should_continue():
     virus = Virus("HIV", 0.8, 0.3)
     sim_one = Simulation(1000, 0.6, virus, 20)
     assert sim_one._simulation_should_continue() == True
-    sim_two = Simulation(1000, 1.0, virus, 0)
+    sim_two = Simulation(1000, 1, virus, 0)
     assert sim_two._simulation_should_continue() == False
     sim_three = Simulation(1000, 0.0, virus, 1000)
     assert sim_three._simulation_should_continue() == False
@@ -35,6 +35,7 @@ def test_infect_newly_infected():
     virus = Virus('Black Plauge', 1.0, 0.5)
     sim = Simulation(1000, 0.6, virus, 20)
     person = Person(2, False)
+    sim.population.append(person)
     sim.newly_infected.append(person._id)
     sim._infect_newly_infected()
     assert person.infection == virus
