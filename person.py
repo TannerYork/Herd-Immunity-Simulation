@@ -27,6 +27,7 @@ class Person(object):
         chance = random.randint(0, 100)/100
         if self.infection and chance < self.infection.mortality_rate:
             self.is_alive = False
+            self.infection = None
             return False
         else:
             self.is_vaccinated = True
