@@ -28,9 +28,9 @@ def test_log_interaction():
 def test_log_infection_survival():
     sample_file = open(sample_logger.file_name, 'r')
     sample_logger.log_infection_survival(sample_person, True)
-    assert sample_file.readlines()[4] == f'{sample_person._id} died from infection\n'
+    assert sample_file.readlines()[4] == f'{sample_person._id} survived infection\n'
     sample_logger.log_infection_survival(sample_person, False)
-    assert sample_file.readlines()[0] == f'{sample_person._id} survived infection\n'
+    assert sample_file.readlines()[0] == f'{sample_person._id} died from infection\n'
     sample_file.close()
 
 def test_log_time_step():
