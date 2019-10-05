@@ -25,7 +25,9 @@ class Logger(object):
             "{person.ID} didn't infect {random_person.ID} because {'vaccinated' or 'already sick'} \n"
         '''
         log_file = open(self.file_name, 'a+')
-        if did_infect is None and random_person_sick is True:
+        if random_person_sick is None and random_person_vacc is None and did_infect is None:
+            log_file.write(f"{person._id} didn't infect {random_person._id} because chance greater than repo_rate\n")
+        elif did_infect is None and random_person_sick is True:
             log_file.write(f"{person._id} didn't infect {random_person._id} because already sick\n")
         elif did_infect is None and random_person_vacc is True:
             log_file.write(f"{person._id} didn't infect {random_person._id} because vaccinated\n")
