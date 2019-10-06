@@ -24,12 +24,14 @@ class Person(object):
         If Person survives, they become vaccinated and they have no infection.
         Return a boolean value indicating whether they survived the infection.
         '''
+        assert self.is_vaccinated != True
+        assert self.infection != None
         chance = random.randint(0, 100)/100
-        if self.infection and chance < self.infection.mortality_rate:
+        if chance < self.infection.mortality_rate:
             self.is_alive = False
             self.infection = None
             return False
         else:
-            self.is_vaccinated = True
             self.infection = None
+            self.is_vaccinated = True
             return True
