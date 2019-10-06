@@ -21,7 +21,7 @@ def test_simulation_should_continue():
     sim_two = Simulation(1000, 1, virus, 0)
     assert sim_two._simulation_should_continue() == False
     sim_three = Simulation(1000, 0.0, virus, 1000)
-    assert sim_three._simulation_should_continue() == False
+    assert sim_three._simulation_should_continue() == True
 
 def test_interaction():
     virus = Virus('Black Plauge', 1.0, 0.5)
