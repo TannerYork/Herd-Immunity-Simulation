@@ -1,0 +1,5 @@
+Pop Size: 10000, Vacc Percentage: 0.1
+Infection: Black-Death, Repo Rate: 0.5, Mortality Rate: 0.5
+People Infected Percent: 0.9
+Total Dead: 4496
+Saved by Vaccination: 167390
