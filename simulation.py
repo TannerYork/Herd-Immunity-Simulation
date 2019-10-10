@@ -98,11 +98,12 @@ class Simulation(object):
                         Since we don't interact with dead people, this does not count as an interaction.
                     3. Otherwise call simulation.interaction(person, random_person) and
                         increment interaction counter by 1.'''
+        people_alive = [person for person in self.population if person.is_alive]
         for person in self.population:
             if person.infection and person.is_alive:
                 interaction_count = 0
                 while interaction_count < 100:
-                    random_person = random.choice(self.population)
+                    random_person = random.choice(people_alive)
                     if random_person.is_alive and random_person != person: 
                         self.interaction(person, random_person)
                         interaction_count += 1
